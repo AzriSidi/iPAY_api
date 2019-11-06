@@ -28,9 +28,10 @@ class ApiController extends REST_Controller {
         foreach($items as $item){			
 			$input['fpxTxnId'] = $item->fpxTxnId;
 			$input['sellerOrderNo'] = $item->sellerOrderNo;
-			$data['result'] = $this->ApiModel->payDetail($input);
+			$data[] = $this->ApiModel->payDetail($input);
 		}
 		$data = array_filter((array) $data);
-		$this->response($data);
+		$output = array("result"=>$data);
+		$this->response($output);
     }
 }

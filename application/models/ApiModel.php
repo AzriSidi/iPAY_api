@@ -5,7 +5,7 @@ class ApiModel extends CI_Model{
 	
 	public function payDetail($input){
 		$result = false;
-		$column = "trxid,amaun,status";
+		$column = "fpx_fpxTxnId,trxid,amaun,status";
 
 		$this->db->select("$column");
 		$this->db->where('fpx_sellerOrderNo', $input['sellerOrderNo']);
@@ -21,8 +21,7 @@ class ApiModel extends CI_Model{
 				array(
 					"fpxTxnId"=>$input['fpxTxnId'],		
 					"sellerOrderNo"=>$input['sellerOrderNo'],
-					"error"=>"Data not exist"
-				));
+					"error"=>"Data not exist"));
 		}
 
 		return $result;
@@ -46,13 +45,14 @@ class ApiModel extends CI_Model{
 				$query = $this->db->get();
 
 				if($query->num_rows() > 0){
-					$mgs = $query->result();
+					$mgs = array(
+						"fpxTxnId"=> $pay['fpx_fpxTxnId'],
+						"data"=>$query->result());
 				}else{
 					$mgs = array(
 						array(
 							"trxid"=>$pay['trxid'],
-							"error"=>"Data not match"							
-						));
+							"error"=>"Data not match"));
 				}
 			}else{
 				$mgs = array(
