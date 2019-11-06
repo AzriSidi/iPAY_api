@@ -12,13 +12,17 @@ class ApiController extends REST_Controller {
 		$this->load->model('ApiModel');
 	}
 
-    public function index_get(){
+	public function index_get(){
+		echo "this is controller";
+	}
+
+    public function payDetail_get(){
 		$input = array(array(
-			'fpxTxnId' => '1909271020250902',
-			'sellerOrderNo' => '12019092700000100009000',
+			'fpxTxnId' => 'string',
+			'sellerOrderNo' => 'string',
 			),array(
-				'fpxTxnId' => '1910211504400540',
-				'sellerOrderNo' => '12019102100000100000145'
+				'fpxTxnId' => 'string',
+				'sellerOrderNo' => 'string'
 			));
 		$this->response($input);		
 	}	
