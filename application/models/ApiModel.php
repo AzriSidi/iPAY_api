@@ -19,8 +19,7 @@ class ApiModel extends CI_Model{
 		}else{
 			$result = array(
 				array(
-					"fpxTxnId"=>$input['fpxTxnId'],		
-					"sellerOrderNo"=>$input['sellerOrderNo'],
+					"fpxTxnId"=>$input['fpxTxnId'],
 					"error"=>"Data not exist"));
 		}
 
@@ -39,7 +38,7 @@ class ApiModel extends CI_Model{
 			$trx = $total->row();
 			
 			if($pay['amaun'] == $trx->amaun){
-				$this->db->select('trx_id,no_akaun,amaun');
+				$this->db->select('trx_id,no_akaun,amaun,jenis');
 				$this->db->from('trxid');
 				$this->db->where('trx_id', $pay['trxid']);	
 				$query = $this->db->get();
