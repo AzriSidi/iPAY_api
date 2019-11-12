@@ -18,9 +18,8 @@ class ApiModel extends CI_Model{
 			$result = $this->trxDetail($query->result_array());
 		}else{
 			$result = array(
-				array(
 					"fpxTxnId"=>$input['fpxTxnId'],
-					"error"=>"Data not exist"));
+					"error"=>"Data not exist");
 		}
 
 		return $result;
@@ -49,16 +48,20 @@ class ApiModel extends CI_Model{
 						"data"=>$query->result());
 				}else{
 					$mgs = array(
+						"fpxTxnId"=> $pay['fpx_fpxTxnId'],
+						"data"=>array(
 						array(
-							"trxid"=>$pay['trxid'],
-							"error"=>"Data not match"));
+							"trx_id"=>$pay['trxid'],
+							"error"=>"Data not match")));
 				}
 			}else{
 				$mgs = array(
+					"fpxTxnId"=> $pay['fpx_fpxTxnId'],
+					"data"=>array(
 					array(
-						"trxid"=>$pay['trxid'],
+						"trx_id"=>$pay['trxid'],
 						"error"=>"Amount not match"						
-					));
+					)));
 			}
 
 			return $mgs;
