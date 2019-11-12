@@ -18,9 +18,8 @@ class ApiModel extends CI_Model{
 			$result = $this->trxDetail($query->result_array());
 		}else{
 			$result = array(
-				array(
 					"fpxTxnId"=>$input['fpxTxnId'],
-					"error"=>"Data not exist"));
+					"error"=>"Data not exist");
 		}
 
 		return $result;
