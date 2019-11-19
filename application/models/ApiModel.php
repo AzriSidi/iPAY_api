@@ -37,7 +37,7 @@ class ApiModel extends CI_Model{
 			$trx = $total->row();
 			
 			if($pay['amaun'] == $trx->amaun){
-				$this->db->select('trx_id,no_akaun,amaun,jenis');
+				$this->db->select('trx_id,no_akaun,amaun,butiran,jenis');
 				$this->db->from('trxid');
 				$this->db->where('trx_id', $pay['trxid']);	
 				$query = $this->db->get();
